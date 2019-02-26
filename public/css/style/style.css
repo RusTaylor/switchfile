@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #AFEEEE 0%, #00CED1 36%, #4682B4 100%);
+    position: relative;
+}
+
+.group-ksk {
+    position: absolute;
+    left: 30%;
+    top: 26%;
+    font-size: 65px;
+    font-family: Times, Times New Roman, serif;
+    font-style: oblique;
+    color: #7B68EE;
+    list-style: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    -webkit-clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    z-index: 999999;
+
+}
+
+
+.group-ksk:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.group-ra{
+    position: absolute;
+    left: 70%;
+    top: 26%;
+    font-size: 65px;
+    font-family: Times, Times New Roman, serif;
+    font-style: oblique;
+    color: #7B68EE;
+    list-style: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    -webkit-clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    z-index: 999999;
+}
+
+.group-ra:hover{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+
+
+
+.courses-ksk{
+    z-index: -1;
+    left: 30%;
+    top: -80%;
+    position: absolute;
+    margin: auto;
+    /*padding-top: 20px;*/
+    list-style: none;
+    width: 166px;
+    background:white;
+    padding: 0;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.courses-ksk li{
+    border-bottom: 1px solid grey;
+    padding-top: 10px;
+}
+
+.courses-ksk a{
+    padding: 0;
+    text-decoration: none;
+    color: darkslategray;
+    font-size: 30px;
+}
+
+
+.courses-ra{
+    z-index: -1;
+    left: 70%;
+    top: -80%;
+    position: absolute;
+    margin: auto;
+    /*padding-top: 20px;*/
+    list-style: none;
+    width: 113px;
+    background:white;
+    padding: 0;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.courses-ra li{
+    border-bottom: 1px solid grey;
+    padding-top: 10px;
+}
+
+.courses-ra a{
+    padding: 0;
+    text-decoration: none;
+    color: darkslategray;
+    font-size: 30px;
+}
+
+
+
+
+
+
