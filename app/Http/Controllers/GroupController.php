@@ -14,7 +14,7 @@ class GroupController extends Controller
             "group" => $group,
             "course" => $id
         ])->get();
-        //Доработать подачу из Модели
+        // Доделать контроллер и проверить его(на всякий случай)
         return view('home', compact('materials'));
     }
 }
