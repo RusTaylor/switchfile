@@ -14,11 +14,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::group(['prefix' => 'ksk'],function (){
 
-    Route::get('/{id}', 'GroupController@presentlibray');
+    Route::get('/{id}', 'GroupController@presentlibray')->where('id', '[2-4]');
 
 });

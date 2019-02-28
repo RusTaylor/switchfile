@@ -7,7 +7,7 @@ click_event_ra = false;
             click_event_ksk = false;
         }
         else {
-            $('.courses-ksk').css('top','100%');
+            $('.courses-ksk').css('top' , '100%');
             click_event_ksk = true;
             click_event_ra = false;
             $('.courses-ra').css('top','-80%');
