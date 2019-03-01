@@ -9,14 +9,20 @@ use Illuminate\Support\Facades\Route;
 
 class GroupController extends Controller
 {
-    public function presentlibray($id)
+    public function presentlibray($id,$theme = '')
     {
-        $group = mb_substr(Route::current()->getPrefix(), 1);
-        $materials = Group::where([
-            "group" => $group,
-            "course" => $id
-        ])->get();
-        // Доделать контроллер и проверить его(для изменения)
-        return view('group', compact('materials'));
+        if (empty(trim($theme))) {
+            $group = mb_substr(Route::current()->getPrefix(), 1);
+            $materials = Group::where([
+                "group" => $group,
+                "course" => $id
+            ])->get();
+            // Доделать контроллер и проверить его(для изменения)
+            return view('group', compact('materials'));
+            }
+        else{
+            //сделать логику вытаскивания из бд с содержанием тем для предметов
+            return view('theme');
+        }
     }
 }

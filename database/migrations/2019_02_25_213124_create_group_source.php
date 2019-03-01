@@ -18,6 +18,8 @@ class CreateGroupSource extends Migration
             $table->string('group');
             $table->integer('course');
             $table->string('material');
+            $table->string('title');
+            $table->string('description');
             $table->string('to_way');
             $table->timestamps();
 
