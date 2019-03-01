@@ -19,6 +19,6 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'ksk'],function (){
 
-    Route::get('/{id}/{theme?}', 'GroupController@presentlibray')->where('id', '[2-4]');
+    Route::get('/{id}/{lesson?}', 'GroupController@presentlibray')->where('id', '[2-4]');
 
 });

@@ -17,7 +17,7 @@ class CreateGroupSource extends Migration
             $table->increments('id');
             $table->string('group');
             $table->integer('course');
-            $table->string('material');
+            $table->string('lesson');
             $table->string('title');
             $table->string('description');
             $table->string('to_way');

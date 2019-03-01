@@ -4,7 +4,7 @@
 
         <div class="card card-nav-tabs text-center" style="margin-top: 100px">
             <div class="card-header card-header-primary">
-                {{$material->material}}
+                {{$material->lesson}}
             </div>
             <div class="card-body">
                 <h4 class="card-title">{{$material->title}}</h4>

@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 class GroupController extends Controller
 {
-    public function presentlibray($id,$theme = '')
+    public function presentlibray($id,$lesson = '')
     {
-        if (empty(trim($theme))) {
+        if (empty(trim($lesson))) {
             $group = mb_substr(Route::current()->getPrefix(), 1);
             $materials = Group::where([
                 "group" => $group,
