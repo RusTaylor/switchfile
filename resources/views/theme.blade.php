@@ -1,4 +1,6 @@
 @extends('home')
 @section('content')
-    <p>Позже тут что-то будет</p>
+    @foreach($sources as $source)
+    <p>{{$source->name_file}}</p>
+    @endforeach
     @endsection

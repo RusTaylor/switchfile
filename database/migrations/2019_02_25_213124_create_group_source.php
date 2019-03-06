@@ -20,7 +20,6 @@ class CreateGroupSource extends Migration
             $table->string('lesson');
             $table->string('title');
             $table->string('description');
-            $table->string('to_way');
             $table->timestamps();
 
         });

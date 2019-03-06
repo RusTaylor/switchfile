@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h4 class="card-title">{{$material->title}}</h4>
                 <p class="card-text">{{$material->description}}</p>
-                <a href="{{url(Request::path().'/'.$material->to_way)}}" class="btn btn-primary">Перейти</a>
+                <a href="{{url(Request::path().'/'.$material->id)}}" class="btn btn-primary">Перейти</a>
             </div>
         </div>
     @endforeach
