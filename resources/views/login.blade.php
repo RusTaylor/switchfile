@@ -1,1 +1,4 @@
-<?php
+@extends('home')
+@section('content')
+
+@endsection
