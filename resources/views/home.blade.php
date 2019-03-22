@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     {{--<link rel="stylesheet" href="{{asset('css/style/reboot.css')}}">--}}
-    <link rel="stylesheet" href="{{asset('css/assets/css/material-kit.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/assets/css/material-kit.css')}}">
 </head>
 <body>
 @include('layouts.header')
