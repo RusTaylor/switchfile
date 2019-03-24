@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="{{asset('css/assets/css/admin-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/assets/css/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/assets/css/default.min.css')}}">
     <script src="{{asset('css/assets/js/core/jquery.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('css/assets/js/core/admin-script.js')}}" type="text/javascript"></script>
+    <script src="{{asset('css/assets/js/core/alertify.min.js')}}" type="text/javascript"></script>
+
 </head>
 <body>
 <!-- Overlay for fixed sidebar -->
@@ -166,5 +170,6 @@
         <p><button class="sidebar-toggle">Toggle sidebar</button></p>
     </div>
 </div>
+@include('layouts.messages')
 </body>
 </html>

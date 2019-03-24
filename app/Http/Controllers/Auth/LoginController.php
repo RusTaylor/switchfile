@@ -50,13 +50,13 @@ class LoginController extends Controller
            ]);
 
            if (Auth::attempt(['name' => $request->input('name'), 'password' => $request->input('password')])){
-               return redirect(route('account'))->with('success',trans('messages.auth.successLogin'));
+               return redirect(route('account'))->with('success',trans('Вы успешно вошли'));
            }
-           return back()->with('error',trans('messages.auth.errorLogin'));
+           return back()->with('error',trans('Ошибка при входе в аккаунт, проверьте правильность введённых данных'));
 
         }catch (ValidationException $e){
             Log::error($e->getMessage());
-            return back()->with('error',trans('messages.auth.errorLogin'));
+            return back()->with('error',trans('Ошибка при входе в аккаунт, некоретный ввод данных'));
         }
 
     }

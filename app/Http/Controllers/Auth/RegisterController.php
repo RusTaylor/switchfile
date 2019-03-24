@@ -8,6 +8,7 @@ use Dotenv\Exception\ValidationException;
 use foo\bar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -53,20 +54,23 @@ class RegisterController extends Controller
     {
         try {
             $this->validator($request->all())->validate();
-        } catch (ValidationException $e) {
-            return back()->with('error', trans('message.register.errorRegister'));
-
-        }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return back()->with('error','Некоректный ввод данных ');
+        };
         $name = $request->input('name');
         $password = $request->input('password');
 
 //        event(new Registered($user = $this->create($request->all())));
-        if($user = $this->create(['name' => @$name, 'password' => $password])) {
+        if ($user = $this->create(['name' => @$name, 'password' => $password])) {
             $this->guard()->login($user);//Изменить лишь для создания без логина
-            return $this->registered($request, $user)
-                ?: redirect($this->redirectPath())->with('success',trans('messages.register.successRegister'));
+             return redirect($this->redirectPath())->with('success', 'Аккаунт успешно зарегестрирован');
+        }else {
+            return back()->with('error', 'Ошибка при регистрации');
         }
+
     }
+
 
     /**
      * Get a validator for an incoming registration request.
