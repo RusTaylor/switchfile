@@ -19,7 +19,8 @@ class CreateSourceTable extends Migration
             $table->integer('course');
             $table->integer('resource_id');
             $table->string('name_file');
-            $table->string('to_way');
+            $table->string('preview')->nullable();
+            $table->string('to_way')->nullable();
             $table->timestamps();
         });
     }
