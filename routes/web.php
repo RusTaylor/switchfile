@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'panel'], function () {
         Route::get('/', 'AccountController@index')->name('account');
+
     });
 
     Route::get('logout', function () {
