@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     {{--<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />--}}
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
-    <link href="{{asset('css/assets/dashboard/material-dashboard.css?v=2.1.1')}}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{asset('css/assets/css/alertify.min.css')}}">
-    <script src="{{asset('css/assets/js/core/alertify.min.js')}}" type="text/javascript"></script>
+    <link href="{{asset('assets/css/material-dashboard.min.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('assets/css/alertify.min.css')}}">
+    <script src="{{asset('assets/js/core/alertify.min.js')}}" type="text/javascript"></script>
 
 </head>
 <body>
@@ -89,22 +90,18 @@
         </footer>
     </div>
 </div>
-<script src="{{asset('css/assets/dashboard/js/core/jquery.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('css/assets/dashboard/js/core/popper.min.js')}}}" type="text/javascript"></script>
-<script src="{{asset('css/assets/dashboard/js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('css/assets/dashboard/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-<script src="{{asset('css/assets/js/core/jquery.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('css/assets/js/core/popper.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('css/assets/js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('css/assets/js/plugins/moment.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/core/jquery.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/core/popper.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
 <!--  Google Maps Plugin    -->
 {{--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>--}}
 <!-- Chartist JS -->
-<script src="{{asset('')}}assets/js/plugins/chartist.min.js"></script>
+<script src="{{asset('assets/js/plugins/chartist.min.js')}}"></script>
 <!--  Notifications Plugin    -->
-{{--<script src="assets/js/plugins/bootstrap-notify.js"></script>--}}
+<script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{asset('css/assets/dashboard/js/material-dashboard.js?v=2.1.1')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
 @include('layouts.messages')
 </body>
 </html>

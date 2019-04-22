@@ -1,5 +1,5 @@
 @if(Request::is('panel'))
-<li class="info-item active">
+<li class="nav-item active">
     @else
     <li class="nav-item">
 @endif
@@ -15,11 +15,11 @@
                     Создать...
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item btn-info" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item btn-info" href="#">Урок</a>
+                    <a class="dropdown-item" href="#">Тему</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
+                    <a class="dropdown-item" href="#">Нового пользователя</a>
+                    {{--Сделать создание пользователя по статусу админа--}}
                 </div>
             </div>
             </div>
