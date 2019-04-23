@@ -33,8 +33,9 @@ class Group extends Model
         if (!$result){
            if (!$result = self::create($data)){
                return $message = ['type' => 'error','message' => 'Ошибка при создание темы'];
+           }else {
+               return true;
            }
-            return true;
         }else{
             return $message = ['type' => 'error','message' => 'Такая тема уже существует'];
         }
