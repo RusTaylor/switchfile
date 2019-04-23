@@ -20,13 +20,13 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'ksk'], function () {
 
-    Route::get('/{id}/{source_id?}', 'GroupController@presentlibray')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
+    Route::get('/{id}/{source_id?}', 'GroupController@presentTheme')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
 
 });
 
 Route::group(['prefix' => 'ra'], function () {
 
-    Route::get('/{id}/{source_id?}', 'GroupController@presentlibray')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
+    Route::get('/{id}/{source_id?}', 'GroupController@presentTheme')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
 
 });
 
@@ -43,6 +43,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'panel'], function () {
         Route::get('/', 'AccountController@index')->name('account');
+        Route::get('/create/theme', 'GroupController@present_createTheme');
+        Route::post('/create/theme', 'GroupController@createTheme')->name('create_theme');
 
     });
 

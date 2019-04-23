@@ -11,8 +11,8 @@
     <!-- Material Kit CSS -->
     <link href="{{asset('assets/css/material-dashboard.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('assets/css/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/material-kit.css')}}">
     <script src="{{asset('assets/js/core/alertify.min.js')}}" type="text/javascript"></script>
-
 </head>
 <body>
 <div class="wrapper ">

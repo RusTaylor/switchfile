@@ -60,13 +60,17 @@ class RegisterController extends Controller
         };
         $name = $request->input('name');
         $password = $request->input('password');
-
+        $check = User::where(['name' => $name], 1)->first();
 //        event(new Registered($user = $this->create($request->all())));
-        if ($user = $this->create(['name' => @$name, 'password' => $password])) {
-            $this->guard()->login($user);//Изменить лишь для создания без логина
-             return redirect($this->redirectPath())->with('success', 'Аккаунт успешно зарегестрирован');
-        }else {
-            return back()->with('error', 'Ошибка при регистрации');
+        if (!$check) {
+            if ($user = $this->create(['name' => $name, 'password' => $password])) {
+                $this->guard()->login($user);//Изменить лишь для создания без логина
+                return redirect($this->redirectPath())->with('success', 'Аккаунт успешно зарегестрирован');
+            } else {
+                return back()->with('error', 'Ошибка при регистрации');
+            }
+        }else{
+            return back()->with('error', 'Такой пользователь уже существует');
         }
 
     }

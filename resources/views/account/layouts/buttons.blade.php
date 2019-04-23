@@ -8,15 +8,15 @@
         <p>Доска</p>
     </a>
 </li>
-        <li class="nav-item active">
+        <li class="nav-item">
             <div class="container">
             <div class="btn-group" >
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Создать...
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item btn-info" href="#">Урок</a>
-                    <a class="dropdown-item" href="#">Тему</a>
+                    <a class="dropdown-item" href="#">Урок</a>
+                    <a class="dropdown-item" href="{{url('/panel/create/theme')}}">Тему</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Нового пользователя</a>
                     {{--Сделать создание пользователя по статусу админа--}}
