@@ -30,14 +30,14 @@ class Group extends Model
             'title' => $data['title'],
         ])->first();
 
-        if (!$result){
-           if (!$result = self::create($data)){
-               return $message = ['type' => 'error','message' => 'Ошибка при создание темы'];
-           }else {
-               return true;
-           }
-        }else{
-            return $message = ['type' => 'error','message' => 'Такая тема уже существует'];
+        if (!$result) {
+            if (!$result = self::create($data)) {
+                return $message = ['type' => 'error', 'message' => 'Ошибка при создание темы'];
+            } else {
+                return true;
+            }
+        } else {
+            return $message = ['type' => 'error', 'message' => 'Такая тема уже существует'];
         }
     }
 
