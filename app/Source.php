@@ -15,6 +15,7 @@ class Source extends Model
                     'course' => $course,
                     'resource_id' => $source_id
                 ])->get();
+
         return $result;
     }
 
