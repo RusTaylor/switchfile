@@ -9,7 +9,6 @@ class AccountController extends Controller
 {
     public function index(){
         $sources = Group::all();
-        //sdfdsfsfdsf
-        return view('account.index', compact('source'));
+        return view('account.index', compact('sources'));
     }
 }
