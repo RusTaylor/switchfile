@@ -18,15 +18,21 @@
             <td>{{$source->group}}</td>
             <td class="text-right">{{$source->course}}</td>
             <td class="td-actions text-right">
-                <button type="button" rel="tooltip" class="btn btn-info">
-                    <i class="material-icons">person</i>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-success">
+                {{--<button type="button" rel="tooltip" class="btn btn-info">--}}
+                {{--<i class="material-icons">person</i>--}}
+                {{--</button>--}}
+                <div style="display: inline-flex">
+                <form action="{{url('panel/edit')}}" method="post" style="padding-right: 10px">
+                <button rel="tooltip" class="btn btn-success">
                     <i class="material-icons">edit</i>
                 </button>
-                <button type="button" rel="tooltip" class="btn btn-danger">
+                </form>
+                <form action="{{url('panel/delete')}}" method="post">
+                    <button rel="tooltip" class="btn btn-danger">
                     <i class="material-icons">close</i>
                 </button>
+                </form>
+                </div>
             </td>
         </tr>
         @endforeach
