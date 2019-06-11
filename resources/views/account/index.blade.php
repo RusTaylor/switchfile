@@ -64,7 +64,7 @@
         <div class="content">
             <div class="container-fluid">
                 <!-- your content here -->
-                @yield('content')
+                @include('account.layouts.dashboard')
             </div>
         </div>
         <footer class="footer">
