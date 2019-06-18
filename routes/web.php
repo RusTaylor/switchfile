@@ -45,6 +45,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'AccountController@index')->name('account');
         Route::get('/create/theme', 'GroupController@present_createTheme');
         Route::post('/create/theme', 'GroupController@createTheme')->name('create_theme');
+        Route::group(['prefix' => 'action'], function () {
+            Route::get('/{id}','AccountController@View');
+            Route::put('/{id}','AccountController@Edit');
+            Route::delete('/{id}','AccountController@Delete');
+        });
 
     });
 

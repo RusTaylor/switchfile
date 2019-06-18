@@ -13,11 +13,28 @@ class AccountController extends Controller
         $sources = Group::all();
         foreach ($sources as $source) {
             $file_count = count(Source::where([
-                'resource_id' => $source->id
+                'resource_id' => $source->id,
+                'group' => $source->group,
+                'course' => $source->course
             ])->get());
             $source->resource = $file_count;
             $data[] = $source;
         }
         return view('account.index', compact('data'));
+    }
+
+    public function View($id)
+    {
+
+    }
+
+    public function Edit($id)
+    {
+
+    }
+
+    public function Delete($id)
+    {
+
     }
 }
