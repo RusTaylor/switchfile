@@ -3,20 +3,20 @@
         <tr>
             <th class="text-center">#</th>
             <th>Предмет</th>
-            <th>Загаловок</th>
-            <th>Группа</th>
-            <th class="text-right">Курс</th>
+            <th>Заголовок</th>
+            <th>Группа/Курс</th>
+            <th class="text-right">Прикреплённые файлы</th>
             <th class="text-right">Действие</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($sources as $source)
+        @foreach($data as $source)
         <tr>
             <td class="text-center">{{$source->id}}</td>
             <td>{{$source->lesson}}</td>
             <td>{{$source->title}}</td>
-            <td>{{$source->group}}</td>
-            <td class="text-right">{{$source->course}}</td>
+            <td>{{$source->group}}/{{$source->course}}</td>
+            <td class="text-right">{{$source->resource}}</td>
             <td class="td-actions text-right">
                 {{--<button type="button" rel="tooltip" class="btn btn-info">--}}
                 {{--<i class="material-icons">person</i>--}}
