@@ -3,13 +3,15 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     {{--<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />--}}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'/>
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
-    <link href="{{asset('assets/css/material-dashboard.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/material-dashboard.min.css')}}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{asset('assets/css/alertify.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/material-kit.css')}}">
     <script src="{{asset('assets/js/core/alertify.min.js')}}" type="text/javascript"></script>
@@ -32,8 +34,8 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                @include('account.layouts.buttons')
-                <!-- your sidebar here -->
+            @include('account.layouts.buttons')
+            <!-- your sidebar here -->
             </ul>
         </div>
     </div>
@@ -43,7 +45,8 @@
             <div class="container-fluid">
                 <div class="navbar-wrapper">
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
@@ -64,7 +67,8 @@
         <div class="content">
             <div class="container-fluid">
                 <!-- your content here -->
-                @include('account.layouts.dashboard')
+                @yield('content')
+                {{--@include('account.layouts.dashboard')--}}
             </div>
         </div>
         <footer class="footer">
@@ -82,7 +86,8 @@
                     &copy;
                     <script>
                         document.write(new Date().getFullYear())
-                    </script>, made with <i class="material-icons">favorite</i> by
+                    </script>
+                    , made with <i class="material-icons">favorite</i> by
                     <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
                 </div>
                 <!-- your footer here -->

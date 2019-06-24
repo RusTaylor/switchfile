@@ -12,20 +12,28 @@ class AccountController extends Controller
     {
         $sources = Group::all();
         foreach ($sources as $source) {
-            $file_count = count(Source::where([
+            $source->resource = count(Source::where([
                 'resource_id' => $source->id,
                 'group' => $source->group,
                 'course' => $source->course
             ])->get());
-            $source->resource = $file_count;
             $data[] = $source;
         }
-        return view('account.index', compact('data'));
+        return view('account.dashboard', compact('data'));
     }
 
     public function View($id)
     {
-
+        $group_source = Group::where([
+            'id' => $id
+        ])->first();
+        $source = Source::where([
+            'resource_id' => $group_source->id,
+            'group' => $group_source->group,
+            'course' => $group_source->course
+        ])->get();
+//        return view('account.view');
+        dd([$group_source,$source]);
     }
 
     public function Edit($id)
