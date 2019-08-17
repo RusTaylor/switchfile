@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'panel'], function () {
         Route::get('/', 'AccountController@index')->name('account');
-        Route::get('/create/theme', 'GroupController@present_createTheme');
+        Route::get('/create/theme', 'GroupController@presentCreateTheme');
         Route::post('/create/theme', 'GroupController@createTheme')->name('create_theme');
 
     });
