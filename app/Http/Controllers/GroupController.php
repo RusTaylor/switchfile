@@ -13,16 +13,15 @@ use Exception;
 
 class GroupController extends Controller
 {
-    public function presentTheme($id, $source_id = '')
+    public function presentTheme($id, $sourceId = '')
     {
         $group = mb_substr(Route::current()->getPrefix(), 1);
-        if (!empty(trim($source_id))) {
-            $sources = Source::getSource($group, $id, $source_id);
+        if (!empty(trim($sourceId))) {
+            $sources = Source::getSource($group, $id, $sourceId);
             return view('theme', compact('sources'));
-        } else {
-            $materials = Group::getGroupSource($group, $id);
-            return view('group', compact('materials'));
         }
+        $materials = Group::getGroupSource($group, $id);
+        return view('group', compact('materials'));
     }
 
     public function presentCreateTheme()
@@ -48,9 +47,8 @@ class GroupController extends Controller
         $result = Group::setGroupSource($theme);
         if (is_array($result)) {
             return back()->with($result['type'], $result['message']);
-        } else {
-            return redirect(route('account'))->with('success', 'Тема успешно создана!');
         }
+        return redirect(route('account'))->with('success', 'Тема успешно создана!');
     }
 
     protected function validator(array $data)
