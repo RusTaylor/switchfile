@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset('assets/css/alertify.min.css')}}">
     {{--<link rel="stylesheet" href="{{asset('assets/css/default.min.css')}}">--}}
     <link rel="stylesheet" href="{{asset('assets/css/material-kit.css')}}">
@@ -15,6 +16,7 @@
 <script src="{{asset('assets/js/core/popper.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/plugins/moment.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/material-kit.js')}}"></script>
 <script src="{{asset('assets/js/core/alertify.min.js')}}" type="text/javascript"></script>
 @include('layouts.messages')
 </body>

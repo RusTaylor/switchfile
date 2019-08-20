@@ -33,6 +33,8 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/panel';
+    /** @var User $userModel */
+    private $userModel;
 
     /**
      * Create a new controller instance.
@@ -42,12 +44,13 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->userModel = new User();
     }
 
     /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
@@ -56,12 +59,11 @@ class RegisterController extends Controller
             $this->validator($request->all())->validate();
         } catch (\Exception $e) {
             Log::error($e->getMessage());
-            return back()->with('error','Некоректный ввод данных ');
+            return back()->with('error', 'Некоректный ввод данных ');
         };
         $name = $request->input('name');
         $password = $request->input('password');
-        $check = User::where(['name' => $name], 1)->first();
-//        event(new Registered($user = $this->create($request->all())));
+        $check = $this->userModel->where(['name' => $name], 1)->first();
         if (!$check) {
             if ($user = $this->create(['name' => $name, 'password' => $password])) {
                 $this->guard()->login($user);//Изменить лишь для создания без логина
@@ -69,7 +71,7 @@ class RegisterController extends Controller
             } else {
                 return back()->with('error', 'Ошибка при регистрации');
             }
-        }else{
+        } else {
             return back()->with('error', 'Такой пользователь уже существует');
         }
 
@@ -79,7 +81,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -93,7 +95,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array $data
+     * @param array $data
      * @return \App\User
      */
     protected function create(array $data)

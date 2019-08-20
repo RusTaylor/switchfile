@@ -7,9 +7,9 @@ use App\Lesson;
 use App\Source;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
+use Exception;
 
 class GroupController extends Controller
 {
@@ -25,7 +25,7 @@ class GroupController extends Controller
         }
     }
 
-    public function present_createTheme()
+    public function presentCreateTheme()
     {
         $lessons = Lesson::all();
         return view('account.create.theme', compact('lessons')); //доделать вид страницы создания темы
@@ -34,25 +34,23 @@ class GroupController extends Controller
 
     public function createTheme(Request $request)
     {
-        $table_colums = ['group', 'course', 'lesson', 'title', 'description'];
+        $tableColumns = ['group', 'course', 'lesson', 'title', 'description'];
         $theme = [];
-
-
-        try{
+        try {
             $this->validator($request->all())->validate();
-        }catch (\Exception $e){
+        } catch (Exception $e) {
             Log::error($e->getMessage());
-            return back()->with('error','Заполните все формы правильно!');
+            return back()->with('error', 'Заполните все формы правильно!');
         };
-        foreach ($table_colums as $key) {
+        foreach ($tableColumns as $key) {
             $theme[$key] = $request->input($key);
         }
         $result = Group::setGroupSource($theme);
-            if (is_array($result)){
-                return back()->with($result['type'],$result['message']);
-            }else{
-                return redirect(route('account'))->with('success','Тема успешно создана!');
-            }
+        if (is_array($result)) {
+            return back()->with($result['type'], $result['message']);
+        } else {
+            return redirect(route('account'))->with('success', 'Тема успешно создана!');
+        }
     }
 
     protected function validator(array $data)

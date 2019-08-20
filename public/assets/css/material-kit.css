@@ -17615,7 +17615,6 @@ footer .pull-center {
   .navbar .dropdown .dropdown-menu {
     background-color: transparent;
     border: 0;
-    padding-bottom: 15px;
     transition: none;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -17623,7 +17622,6 @@ footer .pull-center {
     width: auto;
     margin-bottom: 15px;
     padding-top: 0;
-    height: 300px;
     animation: none;
     opacity: 1;
     overflow-y: scroll;
