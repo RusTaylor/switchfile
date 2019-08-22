@@ -3,13 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 
 class GroupSource extends Model
 {
     protected $table = 'group_source';
     protected $fillable = ['group', 'course', 'lesson', 'title', 'description'];
 
+// TODO: Переписать все методы
     public static function getGroupSource(string $group, int $course)
     {
         $result = self::where([
