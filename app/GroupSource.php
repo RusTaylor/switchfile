@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
-class Group extends Model
+class GroupSource extends Model
 {
     protected $table = 'group_source';
     protected $fillable = ['group', 'course', 'lesson', 'title', 'description'];
