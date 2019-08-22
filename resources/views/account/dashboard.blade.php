@@ -12,29 +12,29 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($data as $source)
+        @foreach($groupSources as $groupSource)
             <tr>
-                <td class="text-center">{{$source->id}}</td>
-                <td>{{$source->lesson}}</td>
-                <td>{{$source->title}}</td>
-                <td>{{$source->group}}/{{$source->course}}</td>
-                <td class="text-right">{{$source->resource}}</td>
+                <td class="text-center">{{$groupSource->id}}</td>
+                <td>{{$groupSource->lesson}}</td>
+                <td>{{$groupSource->title}}</td>
+                <td>{{$groupSource->group}}/{{$groupSource->course}}</td>
+                <td class="text-right">{{$groupSource->sources}}</td>
                 <td class="td-actions text-right">
                     <div style="display: inline-flex">
-                        <form action="{{url('panel/action/'.$source->id)}}" method="get" style="padding-right: 10px">
+                        <form action="{{url('panel/action/'.$groupSource->id)}}" method="get" style="padding-right: 10px">
                             <button rel="tooltip" class="btn btn-info">
                                 <i class="material-icons">person</i>
                             </button>
                             {{csrf_field()}}
                         </form>
-                        <form action="{{url('panel/action/'.$source->id)}}" method="post" style="padding-right: 10px">
+                        <form action="{{url('panel/action/'.$groupSource->id)}}" method="post" style="padding-right: 10px">
                             <button rel="tooltip" class="btn btn-success">
                                 <i class="material-icons">edit</i>
                             </button>
                             @method('put')
                             {{csrf_field()}}
                         </form>
-                        <form action="{{url('panel/action/'.$source->id)}}" method="post">
+                        <form action="{{url('panel/action/'.$groupSource->id)}}" method="post">
                             <button rel="tooltip" class="btn btn-danger">
                                 <i class="material-icons">close</i>
                             </button>
