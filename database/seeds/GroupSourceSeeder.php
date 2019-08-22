@@ -15,7 +15,7 @@ class GroupSourceSeeder extends Seeder
         DB::table('group_source')->insert([
             'group' => 'ksk',
             'course' => 2,
-            'lesson' => 'mdk',
+            'lesson' => 'МДК',
             'title' => 'Books',
             'description' => 'Books'
         ]);
