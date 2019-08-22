@@ -17,16 +17,16 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('home');
 });
-
+/** @todo Совместить с ra и сделать по выбору */
 Route::group(['prefix' => 'ksk'], function () {
 
-    Route::get('/{id}/{source_id?}', 'GroupController@presentTheme')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
+    Route::get('/{id}/{sourceId?}', 'GroupController@presentTheme')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
 
 });
 
 Route::group(['prefix' => 'ra'], function () {
 
-    Route::get('/{id}/{source_id?}', 'GroupController@presentTheme')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
+    Route::get('/{id}/{sourceId?}', 'GroupController@presentTheme')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
 
 });
 
