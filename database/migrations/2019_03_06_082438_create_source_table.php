@@ -17,11 +17,14 @@ class CreateSourceTable extends Migration
             $table->increments('id');
             $table->string('group');
             $table->integer('course');
-            $table->integer('resource_id');
+            $table->integer('resource_id')->unsigned();
             $table->string('name_file');
             $table->string('preview')->nullable();
             $table->string('to_way')->nullable();
             $table->timestamps();
+        });
+        Schema::table('source', function (Blueprint $table) {
+            $table->foreign('resource_id')->references('id')->on('group_source')->onDelete('cascade');
         });
     }
 
