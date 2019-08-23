@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupSource extends Migration
+class CreateGroupDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateGroupSource extends Migration
      */
     public function up()
     {
-        Schema::create('group_source', function (Blueprint $table) {
+        Schema::create('group_data', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('group_data_id')->unsigned();
-            $table->string('lesson');
-            $table->string('title');
-            $table->string('description');
+            $table->string('group');
+            $table->integer('course');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateGroupSource extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_source');
+        Schema::dropIfExists('group_data');
     }
 }

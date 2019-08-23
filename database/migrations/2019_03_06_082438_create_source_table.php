@@ -23,9 +23,6 @@ class CreateSourceTable extends Migration
             $table->string('to_way')->nullable();
             $table->timestamps();
         });
-        Schema::table('source', function (Blueprint $table) {
-            $table->foreign('resource_id')->references('id')->on('group_source')->onDelete('cascade');
-        });
     }
 
     /**
