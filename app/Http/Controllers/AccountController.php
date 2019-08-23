@@ -18,7 +18,7 @@ class AccountController extends Controller
         return view('account.dashboard', compact('groupSources'));
     }
 
-    public function View($id)
+    public function view($id)
     {
         $group_source = GroupSource::where([
             'id' => $id
@@ -32,12 +32,12 @@ class AccountController extends Controller
         dd([$group_source, $source]);
     }
 
-    public function Edit($id)
+    public function edit($id)
     {
 
     }
 
-    public function Delete($id)
+    public function delete($id)
     {
 
     }
