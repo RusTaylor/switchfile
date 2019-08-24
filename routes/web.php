@@ -17,18 +17,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('home');
 });
-/** @todo Совместить с ra и сделать по выбору */
-Route::group(['prefix' => 'ksk'], function () {
 
-    Route::get('/{id}/{sourceId?}', 'GroupController@presentTheme')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
-
-});
-
-Route::group(['prefix' => 'ra'], function () {
-
-    Route::get('/{id}/{sourceId?}', 'GroupController@presentTheme')->where(['id' => '[2-4]', 'source_id' => '[0-9]+']);
-
-});
+Route::get('/{group}/{id}/{sourceId?}', 'GroupController@presentThemes')
+    ->where(['group' => '[a-z]+', 'id' => '[2-4]', 'source_id' => '[0-9]+']);
 
 Route::group(['middleware' => 'guest'], function () {
 
@@ -43,12 +34,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'panel'], function () {
         Route::get('/', 'AccountController@index')->name('account');
-        Route::get('/create/theme', 'GroupController@presentCreateTheme');
+        Route::get('/create/theme', 'GroupController@actionCreateTheme');
         Route::post('/create/theme', 'GroupController@createTheme')->name('create_theme');
         Route::group(['prefix' => 'action'], function () {
-            Route::get('/{id}','AccountController@view');
-            Route::put('/{id}','AccountController@edit');
-            Route::delete('/{id}','AccountController@delete');
+            Route::get('/{id}', 'AccountController@view');
+            Route::put('/{id}', 'AccountController@edit');
+            Route::delete('/{id}', 'AccountController@delete');
         });
 
     });
