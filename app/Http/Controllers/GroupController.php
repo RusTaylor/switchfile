@@ -15,10 +15,10 @@ class GroupController extends Controller
     public function presentThemes($group, $id, $sourceId = null)
     {
         if (!empty($sourceId)) {
-            $sources = Source::getSource($sourceId);
+            $sources = Source::getSources($sourceId);
             return view('theme', compact('sources'));
         }
-        $materials = GroupSource::getGroupSource($group, $id);
+        $materials = GroupSource::getGroupSources($group, $id);
         return view('group', compact('materials'));
     }
 

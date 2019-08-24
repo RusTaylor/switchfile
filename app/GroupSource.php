@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class GroupSource extends Model
 {
@@ -10,14 +11,17 @@ class GroupSource extends Model
     protected $fillable = ['group', 'course', 'lesson', 'title', 'description'];
 
 // TODO: Переписать все методы
-    public static function getGroupSource(string $group, int $course)
+    public static function getGroupSources(string $group, int $course)
     {
-        $result = self::where([
-            'group' => $group,
-            'course' => $course
-        ])->get();
-
-        return $result;
+        $groupSources = DB::table('group_source as gs')
+            ->select(['gs.id', 'gs.lesson', 'gs.title', 'gs.description'])
+            ->join('group_data as gd', 'gs.group_data_id', '=', 'gd.id')
+            ->where([
+                ['gd.group', '=', $group],
+                ['gd.course', '=', $course]
+            ])
+            ->get();
+        return $groupSources;
     }
 
 
