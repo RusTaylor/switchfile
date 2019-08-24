@@ -2,29 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Group;
+use App\GroupSource;
 use App\Lesson;
 use App\Source;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use Exception;
 
 class GroupController extends Controller
 {
-    public function presentTheme($id, $sourceId = '')
+    public function presentThemes($group, $id, $sourceId = null)
     {
-        $group = mb_substr(Route::current()->getPrefix(), 1);
-        if (!empty(trim($sourceId))) {
-            $sources = Source::getSource($group, $id, $sourceId);
+        if (!empty($sourceId)) {
+            $sources = Source::getSource($sourceId);
             return view('theme', compact('sources'));
         }
-        $materials = Group::getGroupSource($group, $id);
+        $materials = GroupSource::getGroupSource($group, $id);
         return view('group', compact('materials'));
     }
 
-    public function presentCreateTheme()
+    public function actionCreateTheme()
     {
         $lessons = Lesson::all();
         return view('account.create.theme', compact('lessons')); //доделать вид страницы создания темы
@@ -44,7 +42,7 @@ class GroupController extends Controller
         foreach ($tableColumns as $key) {
             $theme[$key] = $request->input($key);
         }
-        $result = Group::setGroupSource($theme);
+        $result = GroupSource::setGroupSource($theme);
         if (is_array($result)) {
             return back()->with($result['type'], $result['message']);
         }
