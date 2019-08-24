@@ -15,8 +15,6 @@ class CreateSourceTable extends Migration
     {
         Schema::create('source', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('group');
-            $table->integer('course');
             $table->integer('resource_id')->unsigned();
             $table->string('name_file');
             $table->string('preview')->nullable();
