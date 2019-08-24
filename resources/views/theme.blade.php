@@ -5,10 +5,10 @@
             <div class="card-body">
                 <h4 class="card-title">{{$source->name_file}}</h4>
                 {{-- TODO: Подставить в ссылки пути к файлам из бд--}}
-                <a href="#0" class="card-link">
+                <a href="#" class="card-link">
                     <button type="button" class="btn btn-info">Предпросмотр</button>
                 </a>
-                <a href="#0" class="card-link">
+                <a href="#" class="card-link">
                     <button class="btn btn-social btn-fill btn-google">
                         <i class="fa fa-google-square"></i> Скачать
                     </button>
