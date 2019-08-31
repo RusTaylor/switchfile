@@ -13,8 +13,9 @@ class GroupDataSeeder extends Seeder
     public function run()
     {
         DB::table('group_data')->insert([
-           'group' => 'ksk',
-           'course' => 2
+            'group_id' => 1,
+            'course' => 2,
+            'is_active' => true
         ]);
     }
 }
