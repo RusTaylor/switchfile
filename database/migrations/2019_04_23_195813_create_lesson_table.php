@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLessonsTable extends Migration
+class CreateLessonTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateLessonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('lesson_name');
-            $table->string('group');
-            $table->integer('course');
+        Schema::create('lesson', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('group_data_id')->unsigned();
             $table->timestamps();
         });
     }
