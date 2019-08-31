@@ -16,8 +16,10 @@ class GroupSource extends Model
         $groupSources = DB::table('group_source as gs')
             ->select(['gs.id', 'gs.lesson', 'gs.title', 'gs.description'])
             ->join('group_data as gd', 'gs.group_data_id', '=', 'gd.id')
+            ->join('group as g', 'g.id', '=', 'gd.group_id')
+            ->join('lesson as l', 'l.group_data_id', '=', 'gd.id')
             ->where([
-                ['gd.group', '=', $group],
+                ['g.alias', '=', $group],
                 ['gd.course', '=', $course]
             ])
             ->get();
