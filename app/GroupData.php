@@ -13,9 +13,11 @@ class GroupData extends Model
     {
         $courses = self::where([
             'group_id' => $groupId
-        ])->get();
+        ])
+            ->orderByRaw('course')
+            ->get();
         $courses = ObjectHelper::convertObjectsArray($courses, [
-           'course'
+            'course'
         ]);
         return collect($courses);
     }
