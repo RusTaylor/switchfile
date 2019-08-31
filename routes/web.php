@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/create/theme', 'GroupController@createTheme')->name('create_theme');
         Route::group(['prefix' => 'action'], function () {
             Route::get('/{id}', 'AccountController@view');
-            Route::put('/{id}', 'AccountController@edit');
+            Route::post('/{id}', 'AccountController@edit');
             Route::delete('/{id}', 'AccountController@delete');
         });
 
