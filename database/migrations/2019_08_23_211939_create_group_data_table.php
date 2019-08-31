@@ -15,8 +15,9 @@ class CreateGroupDataTable extends Migration
     {
         Schema::create('group_data', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('group');
+            $table->integer('group_id')->unsigned();
             $table->integer('course');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }
