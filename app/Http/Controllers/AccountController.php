@@ -11,8 +11,10 @@ class AccountController extends Controller
     public function index()
     {
         $groupSources = DB::table('group_source as gs')
-            ->select(['gs.id', 'gs.group', 'gs.course', 'gs.lesson', 'gs.title', DB::raw('count(s.id) as sources')])
+            ->select(['gs.id', 'g.name as groupName', 'gd.course', 'gs.lesson', 'gs.title', DB::raw('count(s.id) as sources')])
             ->leftJoin('source as s', 'gs.id', '=', 's.resource_id')
+            ->leftJoin('group_data as gd','gs.group_data_id','=','gd.id')
+            ->leftJoin('group as g','g.id','=','gd.group_id')
             ->groupBy('gs.id')
             ->get();
         return view('account.dashboard', compact('groupSources'));
