@@ -8,7 +8,7 @@
             <th>Заголовок</th>
             <th>Группа/Курс</th>
             <th class="text-right">Прикреплённые файлы</th>
-            <th class="text-right">Действие</th>
+            <th class="text-right">Действия</th>
         </tr>
         </thead>
         <tbody>
@@ -17,29 +17,28 @@
                 <td class="text-center">{{$groupSource->id}}</td>
                 <td>{{$groupSource->lesson}}</td>
                 <td>{{$groupSource->title}}</td>
-                <td>{{$groupSource->group}}/{{$groupSource->course}}</td>
+                <td>{{$groupSource->groupName}}/{{$groupSource->course}}</td>
                 <td class="text-right">{{$groupSource->sources}}</td>
                 <td class="td-actions text-right">
                     <div style="display: inline-flex">
-                        <form action="{{url('panel/action/'.$groupSource->id)}}" method="get" style="padding-right: 10px">
+                        <form action="{{url('panel/action/'.$groupSource->id)}}" method="get"
+                              style="padding-right: 10px">
                             <button rel="tooltip" class="btn btn-info">
                                 <i class="material-icons">person</i>
                             </button>
-                            {{csrf_field()}}
                         </form>
-                        <form action="{{url('panel/action/'.$groupSource->id)}}" method="post" style="padding-right: 10px">
+                        <form action="{{url('panel/action/'.$groupSource->id)}}" method="post"
+                              style="padding-right: 10px">
                             <button rel="tooltip" class="btn btn-success">
                                 <i class="material-icons">edit</i>
                             </button>
-                            @method('put')
-                            {{csrf_field()}}
                         </form>
                         <form action="{{url('panel/action/'.$groupSource->id)}}" method="post">
+                            @method('delete')
+                            @csrf
                             <button rel="tooltip" class="btn btn-danger">
                                 <i class="material-icons">close</i>
                             </button>
-                            @method('delete')
-                            {{csrf_field()}}
                         </form>
                     </div>
                 </td>
