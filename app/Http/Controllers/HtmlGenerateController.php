@@ -16,4 +16,9 @@ class HtmlGenerateController extends Controller
         });
         return $groupsAndCourses;
     }
+
+    public function ajaxGetCoursesForGroup(Request $request)
+    {
+        return GroupData::getCoursesForGroup($request->post('group'));
+    }
 }
