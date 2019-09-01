@@ -31,7 +31,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-
+    Route::post('/get/courses', 'HtmlGenerateController@ajaxGetCoursesForGroup');
     Route::group(['prefix' => 'panel'], function () {
         Route::get('/', 'AccountController@index')->name('account');
         Route::get('/create/theme', 'GroupController@actionCreateTheme');
