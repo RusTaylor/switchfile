@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use App\GroupSource;
-use App\Lesson;
 use App\Source;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -22,14 +22,14 @@ class GroupController extends Controller
         return view('group', compact('materials'));
     }
 
-    public function actionCreateTheme()
+    public function viewBlankCreateTheme()
     {
-        $lessons = Lesson::all();
-        return view('account.create.theme', compact('lessons')); //доделать вид страницы создания темы
+        $groups = Group::all();
+        return view('account.create.theme', compact('groups')); //доделать вид страницы создания темы
 
     }
 
-    public function createTheme(Request $request)
+    public function actionCreateTheme(Request $request)
     {
         $tableColumns = ['group', 'course', 'lesson', 'title', 'description'];
         $theme = [];
