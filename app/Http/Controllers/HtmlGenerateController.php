@@ -8,7 +8,19 @@ use Illuminate\Http\Request;
 
 class HtmlGenerateController extends Controller
 {
-    public static function generateHeader()
+    /**
+     * Возвращает коллекцию* групп с их курсами
+     * ```php
+     * [
+     * ['name' => '{Название}','alias' => '{name}','groupCurses' => [
+     * ['course' => '{course(int)}']
+     * ...
+     * ]]
+     * ...
+     * ]
+     * @return \Illuminate\Support\Collection
+     */
+    public static function createGroupsListForHeader()
     {
         $groups = Group::getActiveGroups();
         $groupsAndCourses = $groups->each(function ($item) {
@@ -17,6 +29,11 @@ class HtmlGenerateController extends Controller
         return $groupsAndCourses;
     }
 
+    /**
+     * @param Request $request
+     * Возвращает все курсы для переданной группы
+     * @return \Illuminate\Support\Collection
+     */
     public function ajaxGetCoursesForGroup(Request $request)
     {
         return GroupData::getCoursesForGroup($request->post('group'));
