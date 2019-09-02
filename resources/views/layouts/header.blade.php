@@ -1,5 +1,5 @@
 <?php
-$groupsAndCourses = App\Http\Controllers\HtmlGenerateController::generateHeader()
+$groupsAndCourses = App\Http\Controllers\HtmlGenerateController::createGroupsListForHeader()
 ?>
 <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container">
