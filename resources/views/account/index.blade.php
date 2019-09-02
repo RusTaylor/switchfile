@@ -108,5 +108,42 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
 @include('layouts.messages')
+<script>
+    $('#groups').on('change','input[type=radio]',function () {
+        let data = {
+            group: this.value
+        };
+        $.ajax({
+            data: data,
+            type: 'POST',
+            url:'/get/courses',
+            success: function (res) {
+                courses.innerHTML = '';
+                    res.forEach(function (item) {
+                        let courseEl = document.createElement('div');
+                        courseEl.className = "form-check form-check-radio form-check-inline";
+                        courseEl.style.marginLeft = '5%';
+                        let labelEl = document.createElement('label');
+                        labelEl.className = 'form-check-label';
+                        labelEl.innerHTML = item.course;
+                        let inputEl = document.createElement('input');
+                        inputEl.className = 'form-check-input';
+                        inputEl.type = 'radio';
+                        inputEl.value = item.course;
+                        inputEl.name = 'course';
+                        let spanEl = document.createElement('span');
+                        spanEl.className = 'circle';
+                        let spanEl2 = document.createElement('span');
+                        spanEl2.className = 'check';
+                        spanEl.append(spanEl2);
+                        labelEl.append(inputEl);
+                        labelEl.append(spanEl);
+                        courseEl.append(labelEl);
+                        courses.append(courseEl);
+                    })
+            }
+        })
+    });
+</script>
 </body>
 </html>
