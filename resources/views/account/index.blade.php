@@ -109,14 +109,15 @@
 <script src="{{asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
 @include('layouts.messages')
 <script>
+    var data;
     $('#groups').on('change','input[type=radio]',function () {
-        let data = {
+         data = {
             group: this.value
         };
         $.ajax({
             data: data,
             type: 'POST',
-            url:'/get/courses',
+            url:'/api/get/courses',
             success: function (res) {
                 courses.innerHTML = '';
                     res.forEach(function (item) {
@@ -144,6 +145,39 @@
             }
         })
     });
+    $('#courses').on('change','input[type=radio]', function () {
+        data['course'] = this.value;
+        $.ajax({
+            data: data,
+            type: 'POST',
+            url: '/api/get/lessons',
+            success: function (res) {
+                lessons.innerHTML = '';
+                res.forEach(function (item) {
+                    let courseEl = document.createElement('div');
+                    courseEl.className = "form-check form-check-radio form-check-inline";
+                    courseEl.style.marginLeft = '5%';
+                    let labelEl = document.createElement('label');
+                    labelEl.className = 'form-check-label';
+                    labelEl.innerHTML = item.lesson;
+                    let inputEl = document.createElement('input');
+                    inputEl.className = 'form-check-input';
+                    inputEl.type = 'radio';
+                    inputEl.value = item.lesson;
+                    inputEl.name = 'lesson';
+                    let spanEl = document.createElement('span');
+                    spanEl.className = 'circle';
+                    let spanEl2 = document.createElement('span');
+                    spanEl2.className = 'check';
+                    spanEl.append(spanEl2);
+                    labelEl.append(inputEl);
+                    labelEl.append(spanEl);
+                    courseEl.append(labelEl);
+                    lessons.append(courseEl);
+                })
+            }
+        })
+    })
 </script>
 </body>
 </html>
