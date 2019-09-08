@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class GroupSource extends Model
@@ -27,24 +28,44 @@ class GroupSource extends Model
     }
 
 
-    public static function setGroupSource(array $data)
+    public static function setGroupSource(Collection $data)
     {
-        $result = self::where([
-            'group' => $data['group'],
-            'course' => $data['course'],
-            'lesson' => $data['lesson'],
-            'title' => $data['title'],
-        ])->first();
+        $hasGroupSource = DB::table('group_source as gs')
+            ->join('group_data as gd', 'gd.id', '=', 'gs.group_data_id')
+            ->join('group as g', 'g.id', '=', 'gd.group_id')
+            ->where([
+                ['g.alias', '=', $data->get('group')],
+                ['gd.course', '=', $data->get('course')],
+                ['gs.lesson', '=', $data->get('lesson')],
+                ['gs.title', '=', $data->get('title')],
+                ['gs.description', '=', $data->get('description')]
+            ])
+            ->get();
 
-        if (!$result) {
-            if (!$result = self::create($data)) {
-                return $message = ['type' => 'error', 'message' => 'Ошибка при создание темы'];
-            } else {
-                return true;
+        if (!$hasGroupSource->all()) {
+            $query = DB::table('group_data as gd')
+                ->select([
+                    DB::raw("'" . $data->get('lesson') . "'" . ' as lesson'),
+                    DB::raw("'" . $data->get('title') . "'" . ' as title'),
+                    DB::raw("'" . $data->get('description') . "'" . ' as description'),
+                    'gd.id as group_data_id'
+                ])
+                ->join('group as g', 'g.id', '=', 'gd.group_id')
+                ->where([
+                    ['g.alias', '=', $data->get('group')],
+                    ['gd.course', '=', $data->get('course')]
+                ]);
+
+            $bindings = $query->getBindings();
+
+            $insertQuery = "INSERT into group_source (lesson, title,description,group_data_id) " . $query->toSql();
+            $insertResult = DB::insert($insertQuery, $bindings);
+            if ($insertResult) {
+                return ['type' => 'success', 'message' => 'Тема успешно создана!'];
             }
-        } else {
-            return $message = ['type' => 'error', 'message' => 'Такая тема уже существует'];
+            return ['type' => 'error', 'message' => 'Ошибка при создание темы'];
         }
+        return ['type' => 'error', 'message' => 'Такая тема уже существует'];
     }
 
 }
