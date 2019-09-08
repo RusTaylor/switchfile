@@ -16,7 +16,7 @@ class AccountController extends Controller
             ->leftJoin('group_data as gd','gs.group_data_id','=','gd.id')
             ->leftJoin('group as g','g.id','=','gd.group_id')
             ->groupBy('gs.id')
-            ->get();
+            ->paginate(10);
         return view('account.dashboard', compact('groupSources'));
     }
 
