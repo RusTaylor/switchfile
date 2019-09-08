@@ -26,27 +26,21 @@ class GroupController extends Controller
     {
         $groups = Group::all();
         return view('account.create.theme', compact('groups')); //доделать вид страницы создания темы
-
     }
 
     public function actionCreateTheme(Request $request)
     {
-        $tableColumns = ['group', 'course', 'lesson', 'title', 'description'];
-        $theme = [];
         try {
             $this->validator($request->all())->validate();
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return back()->with('error', 'Заполните все формы правильно!');
         };
-        foreach ($tableColumns as $key) {
-            $theme[$key] = $request->input($key);
+        $result = GroupSource::setGroupSource(collect($request->post()));
+        if ($result['type'] == 'success') {
+            return redirect(route('account'))->with($result['type'], $result['message']);
         }
-        $result = GroupSource::setGroupSource($theme);
-        if (is_array($result)) {
-            return back()->with($result['type'], $result['message']);
-        }
-        return redirect(route('account'))->with('success', 'Тема успешно создана!');
+        return back()->with($result['type'], $result['message']);
     }
 
     protected function validator(array $data)
