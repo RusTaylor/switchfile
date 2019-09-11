@@ -45,30 +45,6 @@
                             <p class="category">Выберите курс группы для которой вы хотите создать тему</p>
                         </div>
                         <div class="card-body" id="courses">
-                            {{--                            <div class="form-check form-check-radio form-check-inline" id="course" style="margin-left: 5%">--}}
-                            {{--                                <label class="form-check-label">--}}
-                            {{--                                    <input class="form-check-input" type="radio" name="course" id="Course" value="2"> 2--}}
-                            {{--                                    <span class="circle">--}}
-                            {{--        <span class="check"></span>--}}
-                            {{--    </span>--}}
-                            {{--                                </label>--}}
-                            {{--                            </div>--}}
-                            {{--                            <div class="form-check form-check-radio form-check-inline">--}}
-                            {{--                                <label class="form-check-label">--}}
-                            {{--                                    <input class="form-check-input" type="radio" name="course" id="Course" value="3"> 3--}}
-                            {{--                                    <span class="circle">--}}
-                            {{--        <span class="check"></span>--}}
-                            {{--    </span>--}}
-                            {{--                                </label>--}}
-                            {{--                            </div>--}}
-                            {{--                            <div class="form-check form-check-radio form-check-inline">--}}
-                            {{--                                <label class="form-check-label">--}}
-                            {{--                                    <input class="form-check-input" type="radio" name="course" id="Course" value="4"> 4--}}
-                            {{--                                    <span class="circle">--}}
-                            {{--        <span class="check"></span>--}}
-                            {{--    </span>--}}
-                            {{--                                </label>--}}
-                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -80,20 +56,7 @@
                         <div class="card-header">
                             <h4 class="card-title">Выберите предмет:</h4>
                         </div>
-                        <div class="card-body">
-                            {{--TODO Доделать динамическое изменение, код не удалять, он является шаблоном--}}
-{{--                            <div class="form-check form-check-radio form-check-inline"--}}
-{{--                                 style="margin-left: 10%; display: block">--}}
-{{--                                --}}
-{{--                                    <br>--}}
-{{--                                    <label class="form-check-label">--}}
-{{--                                        <input class="form-check-input" type="radio" name="lesson" id="Lesson"--}}
-{{--                                               value="{{$lesson->lesson_name}}"> {{$lesson->lesson_name}}--}}
-{{--                                        <span class="circle">--}}
-{{--        <span class="check"></span>--}}
-{{--    </span>--}}
-{{--                                    </label>--}}
-{{--                            </div>--}}
+                        <div class="card-body" id="lessons">
                         </div>
                     </div>
                 </div>
