@@ -1,5 +1,6 @@
 @extends('home')
 @section('content')
+    <div class="container justify-content-center">
     @foreach($materials as $material)
 
         <div class="card card-nav-tabs text-center" style="margin-top: 100px">
@@ -13,4 +14,5 @@
             </div>
         </div>
     @endforeach
+    </div>
 @endsection
