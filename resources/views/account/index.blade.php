@@ -15,6 +15,18 @@
     <link rel="stylesheet" href="{{asset('assets/css/alertify.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/material-kit.css')}}">
     <script src="{{asset('assets/js/core/alertify.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/core/jquery.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/core/popper.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+    <!--  Google Maps Plugin    -->
+{{--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>--}}
+<!-- Chartist JS -->
+    <script src="{{asset('assets/js/plugins/chartist.min.js')}}"></script>
+    <!--  Notifications Plugin    -->
+    <script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{{asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
 </head>
 <body>
 <div class="wrapper ">
@@ -95,18 +107,6 @@
         </footer>
     </div>
 </div>
-<script src="{{asset('assets/js/core/jquery.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/js/core/popper.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/js/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-<!--  Google Maps Plugin    -->
-{{--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>--}}
-<!-- Chartist JS -->
-<script src="{{asset('assets/js/plugins/chartist.min.js')}}"></script>
-<!--  Notifications Plugin    -->
-<script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
 @include('layouts.messages')
 <script>
     var data;
