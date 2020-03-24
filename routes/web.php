@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/{group}/{id}/{sourceId?}', 'GroupController@presentThemes')
-    ->where(['group' => '[a-z]+', 'id' => '[2-4]', 'source_id' => '[0-9]+']);
+    ->where(['group' => '[a-z]+', 'id' => '[1-4]', 'source_id' => '[0-9]+']);
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
@@ -30,7 +30,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['prefix' => 'api'], function () {
     Route::post('get/courses', 'HtmlGenerateController@ajaxGetCoursesForGroup');
-    Route::post('get/lessons','HtmlGenerateController@ajaxGetLessonsForGroupCourse');
+    Route::post('get/lessons', 'HtmlGenerateController@ajaxGetLessonsForGroupCourse');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -39,13 +39,19 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'AccountController@index')->name('account');
         Route::get('/create/theme', 'GroupController@viewBlankCreateTheme');
         Route::post('/create/theme', 'GroupController@actionCreateTheme')->name('create_theme');
+        Route::get('/edit/{themeId}', 'AccountController@editTheme');
 
-        Route::group(['prefix' => 'action'], function () {
-            Route::get('/{id}', 'AccountController@view');
-            Route::post('/{id}', 'AccountController@edit');
-            Route::delete('/{id}', 'AccountController@delete');
+        Route::group(['prefix' => 'api'], function () {
+            Route::post('/getAllGroups', 'ApiAccountController@getAllGroups');
+            Route::post('/getCourses', 'ApiAccountController@getCoursesForGroup');
+            Route::post('/getLessons', 'ApiAccountController@getLessons');
+            Route::post('/getFileData', 'ApiAccountController@getFileData');
+            Route::post('/saveFileChanges', 'ApiAccountController@saveFileChanges');
+            Route::post('/getFiles', 'ApiAccountController@getFiles');
+            Route::post('/saveThemeChanges', 'ApiAccountController@saveThemeChanges');
+            Route::post('/deleteFile', 'ApiAccountController@deleteFile');
+            Route::post('/deleteTheme', 'ApiAccountController@deleteTheme');
         });
-
     });
 
     Route::get('logout', function () {
