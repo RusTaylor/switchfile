@@ -29,7 +29,7 @@ class ObjectHelperTest extends TestCase
         $this->assertObjectHasAttribute('userData', $convertObject);
         $this->assertObjectHasAttribute('name', $convertObject->userData);
         $this->assertObjectHasAttribute('old', $convertObject->userData);
-        $this->assertEquals('jon',$convertObject->userData->name);
+        $this->assertEquals('jon', $convertObject->userData->name);
 
         $object = new stdClass();
         $object->years = 20;
@@ -49,14 +49,14 @@ class ObjectHelperTest extends TestCase
         $object->group = 'ksk';
         $object->course = 2;
         $convertMap = [
-          'groupData' => function(GroupSource $model) {
-            return ObjectHelper::convertObject($model, [
-                'group',
-                'course'
-            ]);
-          }
+            'groupData' => function (GroupSource $model) {
+                return ObjectHelper::convertObject($model, [
+                    'group',
+                    'course'
+                ]);
+            }
         ];
-        $convertObject = ObjectHelper::convertObject($object,$convertMap);
+        $convertObject = ObjectHelper::convertObject($object, $convertMap);
         $this->assertNotEmpty($convertObject->groupData);
     }
 }
