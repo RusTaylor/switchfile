@@ -20,6 +20,15 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/api/get/courses',
-        '/api/get/lessons'
+        '/api/get/lessons',
+        'panel/api/getAllGroups',
+        'panel/api/getCourses',
+        'panel/api/getLessons',
+        'panel/api/getFileData',
+        'panel/api/saveFileChanges',
+        'panel/api/getFiles',
+        'panel/api/saveThemeChanges',
+        'panel/api/deleteFile',
+        'panel/api/deleteTheme'
     ];
 }
