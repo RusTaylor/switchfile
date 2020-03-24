@@ -5,17 +5,33 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\GroupSource;
 use App\Source;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Exception;
+use Illuminate\View\View;
 
 class GroupController extends Controller
 {
+    /**
+     * @param string $group
+     * @param int $id
+     * @param null | int $sourceId
+     * @return Factory | View
+     */
     public function presentThemes($group, $id, $sourceId = null)
     {
+        $groupIsset = Group::where(['alias' => $group])
+            ->get();
+        /** @var Collection $groupIsset */
+        if (empty($groupIsset->all())) {
+            return abort(404);
+        }
         if (!empty($sourceId)) {
-            $sources = Source::getSources($sourceId);
+            $sources = Source::getSources($sourceId); //TODO перенести метод в другую модель
             return view('theme', compact('sources'));
         }
         $materials = GroupSource::getGroupSources($group, $id);
@@ -28,6 +44,10 @@ class GroupController extends Controller
         return view('account.create.theme', compact('groups')); //доделать вид страницы создания темы
     }
 
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function actionCreateTheme(Request $request)
     {
         try {
@@ -43,6 +63,10 @@ class GroupController extends Controller
         return back()->with($result['type'], $result['message']);
     }
 
+    /**
+     * @param array $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
