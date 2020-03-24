@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GroupData;
 use App\GroupSource;
 use App\Source;
 use Illuminate\Support\Facades\DB;
@@ -13,34 +14,33 @@ class AccountController extends Controller
         $groupSources = DB::table('group_source as gs')
             ->select(['gs.id', 'g.name as groupName', 'gd.course', 'gs.lesson', 'gs.title', DB::raw('count(s.id) as sources')])
             ->leftJoin('source as s', 'gs.id', '=', 's.resource_id')
-            ->leftJoin('group_data as gd','gs.group_data_id','=','gd.id')
-            ->leftJoin('group as g','g.id','=','gd.group_id')
-            ->groupBy('gs.id')
+            ->leftJoin('group_data as gd', 'gs.group_data_id', '=', 'gd.id')
+            ->leftJoin('group as g', 'g.id', '=', 'gd.group_id')
+            ->groupBy(['gs.id'])
             ->paginate(10);
         return view('account.dashboard', compact('groupSources'));
     }
 
-    public function view($id)
+    public function editTheme($themeId)
     {
-        $group_source = GroupSource::where([
-            'id' => $id
-        ])->first();
-        $source = Source::where([
-            'resource_id' => $group_source->id,
-            'group' => $group_source->group,
-            'course' => $group_source->course
-        ])->get();
-//        return view('account.view');
-        dd([$group_source, $source]);
-    }
+        /** @var GroupSource $theme */
+        $theme = GroupSource::find($themeId);
 
-    public function edit($id)
-    {
+        if (empty($theme)) {
+            return redirect()->back()->with('error', 'Тема не найдена');
+        }
 
-    }
+        $sources = $theme->source()->get()->toArray();
 
-    public function delete($id)
-    {
+        /** @var GroupData $course */
+        $course = $theme->groupData()->get()->get(0);
 
+        $group = null;
+
+        if (!empty($course)) {
+            $group = $course->group()->get()->get(0);
+        }
+
+        return view('account.edit.themeEdit', compact('sources', 'course', 'theme', 'group'));
     }
 }
