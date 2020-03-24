@@ -6,15 +6,36 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class GroupSource
+ * @package App
+ * @property int $id
+ * @property int $group_data_id
+ * @property string $lesson
+ * @property string $title
+ * @property string $description
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class GroupSource extends Model
 {
     protected $table = 'group_source';
-    protected $fillable = ['group', 'course', 'lesson', 'title', 'description'];
+    protected $fillable = ['group_data_id', 'lesson', 'title', 'description'];
+
+    public function source()
+    {
+        return $this->hasMany('App\Source','resource_id');
+    }
+
+    public function groupData()
+    {
+        return $this->hasOne('App\GroupData', 'id','group_data_id');
+    }
 
 // TODO: Переписать все методы
     public static function getGroupSources(string $group, int $course)
     {
-        $groupSources = DB::table('group_source as gs')
+        return DB::table('group_source as gs')
             ->select(['gs.id', 'gs.lesson', 'gs.title', 'gs.description'])
             ->join('group_data as gd', 'gs.group_data_id', '=', 'gd.id')
             ->join('group as g', 'g.id', '=', 'gd.group_id')
@@ -23,8 +44,8 @@ class GroupSource extends Model
                 ['g.alias', '=', $group],
                 ['gd.course', '=', $course]
             ])
+            ->groupBy(['gs.id'])
             ->get();
-        return $groupSources;
     }
 
 
